@@ -12,6 +12,9 @@ import {
 } from './core/ApiError';
 import Logger from './core/Logger';
 
+import './database';
+import './cache';
+
 const app = express();
 
 // Routes
