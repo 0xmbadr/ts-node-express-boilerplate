@@ -7,7 +7,7 @@
     "start": "pnpm run build && pnpm run serve",
     "serve": "node -r dotenv/config build/server.js",
     "build": "pnpm run clean && pnpm run build-ts",
-    "watch": "npx concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"yellow.bold,cyan.bold,green.bold\" \"pnpm run watch-ts\" \"pnpm run watch-node\"",
+    "start:dev": "npx concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"yellow.bold,cyan.bold,green.bold\" \"pnpm run watch-ts\" \"pnpm run watch-node\"",
     "watch-node": "nodemon -r dotenv/config build/server.js",
     "clean": "rimraf ./build",
     "build-ts": "tsc",
@@ -20,6 +20,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "concurrently": "^8.0.1",
     "dotenv": "^16.0.3",
     "express": "^4.18.2"
   },
