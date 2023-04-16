@@ -1,4 +1,8 @@
 import express, { Request, Response, NextFunction } from 'express';
+import swaggerUi from 'swagger-ui-express';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const swaggerDocument = require('../swagger.json');
+
 import { environment } from './config';
 import {
   ApiError,
@@ -9,6 +13,13 @@ import {
 import Logger from './core/Logger';
 
 const app = express();
+
+// Routes
+app.use(
+  '/api-docs',
+  swaggerUi.serve,
+  swaggerUi.setup(swaggerDocument, { explorer: true }),
+);
 
 // catch 404
 app.use((req, res, next) => next(new NotFoundError()));
